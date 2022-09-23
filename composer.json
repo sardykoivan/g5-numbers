@@ -1,0 +1,17 @@
+{
+    "name": "ivan/g5_numbers",
+    "autoload": {
+        "psr-4": {
+            "Ivan\\G5Numbers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ivan Sardyko",
+            "email": "sardyco@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
