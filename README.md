@@ -1,4 +1,5 @@
 требования:
-php
+  - php
 
-run: php ./public/index.php?first=000000&end=999999
+run: 
+  - php -S localhost:8000 public/index.php
