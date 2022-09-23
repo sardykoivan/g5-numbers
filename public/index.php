@@ -1,50 +1,32 @@
 <?php
 
+// преобразовать входные параметры в инт чтобы можно было итерировать
+// собрать массив обратно, заполнив его в формат как было в запросе
+// посчитать количество счастливых билетов, разбивая строку на символы и сравнивая суммы
+
 declare(strict_types=1);
 
 
 use Ivan\G5Numbers\HappyTicketCalculator;
-use Ivan\G5Numbers\HappyTicket;
 
 
 require __DIR__ . '/../vendor/autoload.php';
 
-//$happyTicketCalculator = new HappyTicketCalculator();
-//
-//$b = $happyTicketCalculator->calculateHappyTicketsCount('000000', '999999');
-//
-//var_dump($b);die();
+//ini_set('memory_limit', '1G');
 
-// преобразовать входные параметры в инт чтобы можно было итерировать
-// собрать массив обратно, заполнив его в формат как было в запросе
-// посчитать количество счастливых билетов
+$first = $_GET['first'] ?? null;
+$end = $_GET['end'] ?? null;
 
- $first = '000000';
- $end = '999999';
-
-function intToStr(int $int) {
-    return $str = substr('00000' . $int, -6);
+if (is_null($first) && is_null($end)) {
+    echo 'Введите параметры first и end';
+    exit;
 }
 
-function strToInt(string $string) {
-    return (int) $string;
+if ( ($first < 0 || $end > 999999) || ($first === $end)) {
+    echo 'Некорректные входные параметры first и/или end, доступны значения с 000000 до 999999, также значения не должны совпадать.';
+    exit;
 }
 
-$lucky = array();
-for($i = strToint($first); $i <= strToInt($end); $i++){
-    $str = intToStr($i);
-    if($str[0] + $str[1] + $str[2] == $str[3] + $str[4] + $str[5]){
-        $lucky[] = $str;
-    }
-}
-echo count($lucky);
-
-
-//$lucky = array();
-//for($i = 0; $i < 1000000; $i++){
-//    $str = substr('00000' . $i, -6);
-//    if($str[0] + $str[1] + $str[2] == $str[3] + $str[4] + $str[5]){
-//        $lucky[] = $str;
-//    }
-//}
-//echo count($lucky);
+$happyTicketCalculator = new HappyTicketCalculator();
+$happyTicketsCount = $happyTicketCalculator->calculateHappyTicketsCount($first, $end);
+echo 'Количество счастливых билетов: ' . $happyTicketsCount;
