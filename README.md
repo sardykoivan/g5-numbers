@@ -1,10 +1,11 @@
 требования:
-php, composer
+  - php
+  - composer
 
 run:
-composer install
-php ./public/index.php?first=000000&end=999999
+  - php -S localhost:8000 public/index.php
+  - composer install
 
 tests:
-composer install
-php ./vendor/bin/phpunit tests
+  - composer install
+  - php ./vendor/bin/phpunit tests
