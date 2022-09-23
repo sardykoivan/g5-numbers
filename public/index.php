@@ -10,7 +10,8 @@ declare(strict_types=1);
 use Ivan\G5Numbers\HappyTicketCalculator;
 
 
-require __DIR__ . '/../vendor/autoload.php';
+// require __DIR__ . '/../vendor/autoload.php';
+require 'src/HappyTicketCalculator.php';
 
 // ini_set('memory_limit', '1G');
 
