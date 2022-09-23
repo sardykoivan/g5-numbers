@@ -1,1 +1,1 @@
-run: php ./public/index.php?first=000000&last=999999
+run: php ./public/index.php?first=000000&end=999999
